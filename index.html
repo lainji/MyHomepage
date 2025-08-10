@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Free Website</title>
+  <meta name="description" content="はじめての無料Webサイト。" />
+  <style>
+    :root{
+      --bg:#0b1020;--card:#121933;--ink:#e8ecff;--muted:#b4c0ff;--brand:#6ea8fe;--accent:#a78bfa;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0f1630 60%, #141b3b);color:var(--ink);font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{opacity:.9}
+    .wrap{max-width:960px;margin:0 auto;padding:24px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
+    .logo-badge{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#0b1020;font-weight:900}
+    nav ul{list-style:none;display:flex;gap:16px;margin:0;padding:0}
+    nav a{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06)}
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{font-size:clamp(28px,4.5vw,44px);line-height:1.1;margin:.2em 0 .3em}
+    .lead{color:var(--muted);font-size:1.05rem}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px}
+    .cta{display:inline-block;margin-top:14px;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#0b1020;font-weight:800}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .feature h3{margin:.2em 0}
+    .section{padding:28px 0}
+    footer{opacity:.8;border-top:1px solid rgba(255,255,255,.1);padding:24px 0;margin-top:24px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;font-size:.95rem}
+    @media (max-width:800px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo"><div class="logo-badge">M</div>My Free Site</div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero card">
+      <div>
+        <h1>はじめての無料サイト、できました！</h1>
+        <p class="lead">このテンプレをコピペして、文言を書き換えるだけで公開できます。画像も不要で軽快に表示。完全無料でホスティング可能です。</p>
+        <a class="cta" href="#deploy">無料で公開する →</a>
+      </div>
+      <div class="card">
+        <div class="mono">/index.html</div>
+        <p>この1ファイルだけでOK。<br>テキストをあなた用に変えるだけ！</p>
+        <ul>
+          <li>🧭 メニューは上の <b>About / Features / Contact</b></li>
+          <li>🎨 配色は <code>:root</code> の変数を書き換え</li>
+          <li>📱 スマホ対応済み（レスポンシブ）</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <p>ここにあなたやサービスの紹介を書いてください。1〜3段落くらいが読みやすいです。</p>
+    </section>
+
+    <section id="features" class="section">
+      <h2>Features</h2>
+      <div class="grid">
+        <div class="feature card">
+          <h3>無料ホスティング</h3>
+          <p>GitHub Pages / Cloudflare Pages / Netlify などで￥0公開。</p>
+        </div>
+        <div class="feature card">
+          <h3>高速＆軽量</h3>
+          <p>画像・JSなしでも美しく。必要なら後で追加OK。</p>
+        </div>
+        <div class="feature card">
+          <h3>コピペ運用</h3>
+          <p>この1枚を編集→即デプロイ。更新も簡単。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section card">
+      <h2>Contact</h2>
+      <p>お問い合わせは <a href="mailto:you@example.com">you@example.com</a> まで。</p>
+    </section>
+
+    <section id="deploy" class="section">
+      <h2>公開のやり方（完全無料）</h2>
+      <ol>
+        <li><b>このファイルを保存</b>：名前は <code>index.html</code></li>
+        <li><b>GitHubに新規リポジトリ</b>を作成（公開/Public）し、<code>index.html</code> をアップロード</li>
+        <li><b>Settings → Pages</b> で <i>Deploy from a branch</i> を選び、<code>main</code> / <code>root</code> を指定 → Save</li>
+        <li>数十秒後、表示された URL にアクセスすれば公開完了！</li>
+      </ol>
+      <p>他にも <b>Cloudflare Pages</b> や <b>Netlify Drop</b> に <code>index.html</code> をドラッグ＆ドロップでも一瞬で公開できます。</p>
+    </section>
+
+    <footer>
+      <small>© <span id="y"></span> Your Name — Built with ♥</small>
+    </footer>
+  </div>
+
+  <script>
+    // 年号を自動表示（地味に便利）
+    document.getElementById('y').textContent = new Date().getFullYear()
+  </script>
+</body>
+</html>
