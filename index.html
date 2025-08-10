@@ -1,332 +1,242 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Play, Music2, Sparkles, Mail, MapPin, Link as LinkIcon, Headphones, Waves, Star, Instagram, Twitter, Youtube } from "lucide-react";
-
-// ===== Helper Components =====
-const Section = ({ id, title, subtitle, children }: { id: string; title: string; subtitle?: string; children: React.ReactNode }) => (
-  <section id={id} className="relative py-20 sm:py-24">
-    <div className="absolute inset-0 -z-10 opacity-[0.15]">
-      <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full blur-3xl bg-gradient-to-br from-fuchsia-500 via-cyan-400 to-indigo-500" />
-      <div className="absolute -bottom-16 -right-16 h-72 w-72 rounded-full blur-3xl bg-gradient-to-br from-amber-400 via-pink-500 to-violet-600" />
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PIXEL SUMMER STUDIO | DTM Portfolio</title>
+  <meta name="description" content="チップチューン×UKG。映像/ゲーム/配信用BGM・SE・楽曲提供・ミックス対応。" />
+  <!-- Tailwind (CDN) – ビルド不要 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ちょっとしたアクセント */
+    .glow-bg::before, .glow-bg::after{
+      content:""; position:absolute; inset:auto; pointer-events:none; filter: blur(60px);
+      width: 420px; height: 420px; z-index:-1; opacity:.35;
+    }
+    .glow-bg::before{ top:-120px; left:-120px; background: radial-gradient(circle at 30% 30%, #f0abfc, transparent 60%); }
+    .glow-bg::after { right:-120px; bottom:-120px; background: radial-gradient(circle at 70% 70%, #22d3ee, transparent 60%); }
+  </style>
+</head>
+<body class="bg-[#0a0b12] text-white selection:bg-fuchsia-500/40">
+  <!-- Nav -->
+  <header class="sticky top-0 z-30 border-b border-white/10 backdrop-blur bg-black/30">
+    <div class="mx-auto max-w-6xl px-6 py-3 flex items-center justify-between">
+      <a href="#top" class="font-bold tracking-wide flex items-center gap-2">
+        <span class="inline-block w-5 h-5 rounded-full bg-white/80"></span>
+        <span>PIXEL SUMMER STUDIO</span>
+      </a>
+      <nav class="hidden sm:flex gap-4 text-sm">
+        <a class="px-3 py-1 rounded-full hover:bg-white/10" href="#works">Works</a>
+        <a class="px-3 py-1 rounded-full hover:bg-white/10" href="#showreel">Showreel</a>
+        <a class="px-3 py-1 rounded-full hover:bg-white/10" href="#about">About</a>
+        <a class="px-3 py-1 rounded-full hover:bg-white/10" href="#contact">Contact</a>
+      </nav>
     </div>
-    <div className="mx-auto max-w-6xl px-6">
-      <div className="mb-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight flex items-center gap-3">
-          <Sparkles className="h-6 w-6 sm:h-7 sm:w-7" />
-          {title}
-        </h2>
-        {subtitle && (
-          <p className="mt-3 text-base sm:text-lg text-white/70 leading-relaxed">{subtitle}</p>
-        )}
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="relative overflow-hidden">
+    <div class="absolute left-1/2 top-0 -translate-x-1/2 w-[1200px] h-[700px] bg-gradient-to-br from-fuchsia-500/30 via-cyan-400/20 to-indigo-500/30 blur-3xl -z-10 rounded-full"></div>
+    <section class="mx-auto max-w-6xl px-6 pt-16 sm:pt-24 pb-24 grid gap-10 glow-bg relative">
+      <div>
+        <div class="mb-4 flex flex-wrap items-center gap-2 text-xs">
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">🎧 DTM / コンポーザー・トラックメイカー</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">📍 Osaka, Japan</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+          キャッチーで、なつかしくて、<br class="hidden sm:block">ちょっとフューチャー。
+        </h1>
+        <p class="mt-5 max-w-2xl text-white/80">
+          チップチューンの煌めきとUK Garageのうねり、歌心あるメロディ。コンピ
+          <span class="font-semibold">「PIXEL SUMMER RESTART」</span> ラストトラック収録。
+          映像・ゲーム・配信用のBGM/SE、楽曲提供・ミックスも受付中。
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#contact" class="rounded-full bg-white text-black px-5 py-3 text-sm font-semibold shadow hover:bg-white/90">お仕事の相談をする</a>
+          <a href="#showreel" class="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">ショーリールを再生</a>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2 text-xs text-white/60">
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">Chiptune</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">UK Garage / 2step</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">Future Bass</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">Ambient</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">Game BGM</span>
+        </div>
       </div>
-      {children}
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-0 overflow-hidden">
+        <div class="relative aspect-[16/9] flex items-center justify-center">
+          <button class="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold backdrop-blur hover:bg-white/20">
+            ▶ Showreel: 60sec
+          </button>
+          <p class="absolute bottom-3 text-xs text-white/70">※ デモ動画・オーディオをここに埋め込み</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Works -->
+  <section id="works" class="relative py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="text-3xl font-extrabold tracking-tight flex items-center gap-3">✨ Works / 代表作</h2>
+      <p class="mt-3 text-white/70">クリックで試聴できます。</p>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- item -->
+        <a class="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-5 hover:from-white/15 hover:to-white/10" href="#">
+          <div class="flex items-start gap-4">
+            <div class="mt-1 rounded-xl bg-white/10 p-2">🎵</div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg font-semibold">PIXEL SUMMER RESTART (Comp. Last Track)</h3>
+                <span class="text-xs rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">Chiptune / Future</span>
+              </div>
+              <p class="mt-1 text-sm text-white/70">夏フェスの締めを飾る高揚感。キラーメロ＋透明感のあるシンセレイヤー。</p>
+              <div class="mt-3 text-xs text-white/70">★ 試聴 / 詳細</div>
+            </div>
+          </div>
+        </a>
+        <!-- 以降はダミーを複製して使ってね -->
+        <a class="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-5" href="#">
+          <div class="flex items-start gap-4"><div class="mt-1 rounded-xl bg-white/10 p-2">🎵</div>
+            <div><div class="flex items-center gap-2"><h3 class="text-lg font-semibold">Midnight Arcade</h3><span class="text-xs rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">UKG / 2step</span></div>
+              <p class="mt-1 text-sm text-white/70">跳ねるドラムとボーカルチョップ。ビットクラッシュでノスタルジアをプラス。</p>
+            </div>
+          </div>
+        </a>
+        <a class="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-5" href="#">
+          <div class="flex items-start gap-4"><div class="mt-1 rounded-xl bg-white/10 p-2">🎵</div>
+            <div><div class="flex items-center gap-2"><h3 class="text-lg font-semibold">Quiet City</h3><span class="text-xs rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">Ambient / Lo-fi</span></div>
+              <p class="mt-1 text-sm text-white/70">夜更けの街に滲むサウンドスケープ。配信BGM向けの低干渉ミックス。</p>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
-);
 
-const Pill = ({ children }: { children: React.ReactNode }) => (
-  <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs sm:text-sm text-white/80 backdrop-blur-xl">
-    {children}
-  </span>
-);
-
-const GradientCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-5 sm:p-6 backdrop-blur-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] ${className}`}>
-    <div className="pointer-events-none absolute inset-px rounded-[14px] bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-    {children}
-  </div>
-);
-
-// ===== Main Page =====
-export default function PortfolioHome() {
-  return (
-    <div className="min-h-screen w-full bg-[#0a0b12] text-white selection:bg-fuchsia-500/40">
-      {/* Navbar */}
-      <header className="sticky top-0 z-30 border-b border-white/10 backdrop-blur-xl bg-black/30">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          <a href="#top" className="flex items-center gap-2 font-bold tracking-wide">
-            <Waves className="h-5 w-5" />
-            <span>PIXEL SUMMER STUDIO</span>
-          </a>
-          <nav className="hidden sm:flex items-center gap-4 text-sm">
-            {[
-              ["Works", "#works"],
-              ["Showreel", "#showreel"],
-              ["About", "#about"],
-              ["Contact", "#contact"],
-            ].map(([label, href]) => (
-              <a key={href} href={href} className="rounded-full border border-transparent px-3 py-1 text-white/80 hover:text-white hover:border-white/20">
-                {label}
-              </a>
-            ))}
-          </nav>
+  <!-- Showreel / Player -->
+  <section id="showreel" class="relative py-20">
+    <div class="mx-auto max-w-6xl px-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <div class="mb-3 flex items-center gap-2"><span>▶</span><h3 class="font-semibold">Showreel – 60sec</h3></div>
+        <div class="rounded-xl border border-white/10 bg-black/30 p-4 text-sm text-white/70">
+          ここにYouTubeやSoundCloudの埋め込みを置いてね。
         </div>
-      </header>
-
-      {/* Hero */}
-      <main id="top" className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute left-1/2 top-0 h-[700px] w-[1200px] -translate-x-1/2 rounded-full bg-gradient-to-br from-fuchsia-500/30 via-cyan-400/20 to-indigo-500/30 blur-3xl" />
-        </div>
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-24 pt-16 sm:pt-24">
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="mb-4 flex flex-wrap items-center gap-2">
-              <Pill>
-                <Headphones className="mr-1 h-4 w-4" /> DTM / コンポーザー・トラックメイカー
-              </Pill>
-              <Pill>
-                <MapPin className="mr-1 h-4 w-4" /> Osaka, Japan
-              </Pill>
-            </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
-              キャッチーで、なつかしくて、<br className="hidden sm:block" />
-              ちょっとフューチャー。
-            </h1>
-            <p className="mt-5 max-w-2xl text-base sm:text-lg text-white/80 leading-relaxed">
-              チップチューンの煌めきとUK Garageのうねり、歌心あるメロディ。
-              コンピ『<span className="font-semibold">PIXEL SUMMER RESTART</span>』ラストトラック収録。
-              映像・ゲーム・配信用のBGM/SE、楽曲提供・ミックスも受付中。
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#contact" className="rounded-full bg-white text-black px-5 py-3 text-sm font-semibold shadow hover:bg-white/90">
-                お仕事の相談をする
-              </a>
-              <a href="#showreel" className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">
-                ショーリールを再生
-              </a>
-            </div>
-            <div className="mt-6 flex flex-wrap items-center gap-2 text-xs text-white/60">
-              <Pill>Chiptune</Pill>
-              <Pill>UK Garage / 2step</Pill>
-              <Pill>Future Bass</Pill>
-              <Pill>Ambient</Pill>
-              <Pill>Game BGM</Pill>
-            </div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.05 }}>
-            <GradientCard className="p-0">
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.18),transparent_40%),radial-gradient(ellipse_at_bottom_left,rgba(255,255,255,0.12),transparent_40%)]" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <button className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold backdrop-blur-md hover:bg-white/20">
-                    <Play className="h-4 w-4" />
-                    Showreel: 60sec
-                  </button>
-                  <p className="text-xs text-white/70">※ デモ動画・オーディオをここに埋め込み</p>
-                </div>
-              </div>
-            </GradientCard>
-          </motion.div>
-        </div>
-      </main>
-
-      {/* Works */}
-      <Section id="works" title="Works / 代表作" subtitle="リリース・提供実績や、映像BGM・ゲーム音楽のハイライト。クリックで試聴できます。">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              title: "PIXEL SUMMER RESTART (Comp. Last Track)",
-              tag: "Chiptune / Future",
-              desc: "夏フェスの締めを飾る高揚感。キラーメロ＋透明感のあるシンセレイヤー。",
-              url: "#",
-            },
-            {
-              title: "Midnight Arcade",
-              tag: "UKG / 2step",
-              desc: "跳ねるドラムとボーカルチョップ。ビットクラッシュでノスタルジアをプラス。",
-              url: "#",
-            },
-            {
-              title: "Quiet City",
-              tag: "Ambient / Lo-fi",
-              desc: "夜更けの街に滲むサウンドスケープ。配信BGM向けの低干渉ミックス。",
-              url: "#",
-            },
-            {
-              title: "Battle Routine v2",
-              tag: "Game BGM",
-              desc: "テンポ135の疾走感。SFXとキメ多め、アクションの手触りを強調。",
-              url: "#",
-            },
-            {
-              title: "Warm Neon",
-              tag: "Future Bass",
-              desc: "サイドチェインで揺れるシンセと甘いコード。",
-              url: "#",
-            },
-            {
-              title: "Coffee & Code",
-              tag: "Corporate / Chill",
-              desc: "やさしいピアノとシンセパッド。動画のBGMに最適。",
-              url: "#",
-            },
-          ].map((w, i) => (
-            <motion.a
-              key={w.title}
-              href={w.url}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-            >
-              <GradientCard>
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 rounded-xl bg-white/10 p-2">
-                    <Music2 className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-base sm:text-lg font-semibold">{w.title}</h3>
-                      <Pill>{w.tag}</Pill>
-                    </div>
-                    <p className="mt-1 text-sm text-white/70">{w.desc}</p>
-                    <div className="mt-3 flex items-center gap-3 text-xs text-white/70">
-                      <span className="inline-flex items-center gap-1"><Star className="h-3.5 w-3.5"/>試聴</span>
-                      <span className="inline-flex items-center gap-1"><LinkIcon className="h-3.5 w-3.5"/>詳細</span>
-                    </div>
-                  </div>
-                </div>
-              </GradientCard>
-            </motion.a>
-          ))}
-        </div>
-      </Section>
-
-      {/* Showreel / Player */}
-      <Section id="showreel" title="Showreel / Demo" subtitle="60秒で主要ジャンルをクロスフェード。単曲デモは下のプレイヤーから。">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <GradientCard>
-            <div className="mb-3 flex items-center gap-2">
-              <Play className="h-4 w-4" />
-              <h3 className="font-semibold">Showreel – 60sec</h3>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/30 p-4 text-sm text-white/70">
-              <p>ここに埋め込み動画/オーディオ（YouTube, SoundCloud, self-host など）。</p>
-            </div>
-          </GradientCard>
-
-          <GradientCard>
-            <h3 className="mb-3 font-semibold">単曲プレイヤー（デモ）</h3>
-            <div className="space-y-4">
-              {[
-                ["PIXEL SUMMER RESTART – Last Mix", "demo-last-track.mp3"],
-                ["Midnight Arcade", "demo-ukg.mp3"],
-                ["Quiet City", "demo-ambient.mp3"],
-              ].map(([label, src]) => (
-                <div key={src} className="rounded-xl border border-white/10 bg-black/30 p-4">
-                  <p className="text-sm mb-2 text-white/80">{label as string}</p>
-                  <audio controls className="w-full">
-                    <source src={src as string} type="audio/mpeg" />
-                  </audio>
-                </div>
-              ))}
-            </div>
-          </GradientCard>
-        </div>
-      </Section>
-
-      {/* Services */}
-      <Section id="services" title="Services / できること" subtitle="作編曲、サウンドデザイン、ミックスまでワンストップで対応します。">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[ 
-            { title: "楽曲提供", desc: "番組・配信・ゲーム向けのBGM/SE、タイアップ曲、テーマ曲制作。" },
-            { title: "サウンドデザイン", desc: "UI/SE、ゲームSFX、レトロ×モダンな質感の音作り。" },
-            { title: "ミックス/マスタリング", desc: "透明感・立体感のある仕上がり。配信/映像で映える音に。" },
-          ].map((s, i) => (
-            <motion.div key={s.title} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45, delay: i * 0.05 }}>
-              <GradientCard>
-                <h3 className="text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm text-white/70">{s.desc}</p>
-              </GradientCard>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Stack */}
-      <Section id="stack" title="Tools / 制作環境" subtitle="メインDAWは Cubase 12。KOMPLETE 13、Nexus4、Serum、外付けSSD運用。">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-          {["Cubase 12","KOMPLETE 13","Nexus4","Serum","FabFilter","Ozone","Voicemeeter","OBS","RX","Splice"].map((t) => (
-            <div key={t} className="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-xs sm:text-sm text-white/80">
-              {t}
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* About */}
-      <Section id="about" title="About / プロフィール" subtitle="メロディ重視、だけどグルーヴは最新。チップチューンとUKGのハイブリッドが得意です。">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          <GradientCard className="md:col-span-2">
-            <p className="text-sm sm:text-base text-white/80 leading-relaxed">
-              幼少期のゲーム音楽に影響を受け、現在は電子音楽を中心に制作。<br className="hidden sm:block" />
-              チップチューンのきらめきと、2step/UKGのスウィング感を融合させた、
-              ノスタルジックかつモダンなトラックを目指しています。<br className="hidden sm:block" />
-              コンピ参加曲『PIXEL SUMMER RESTART』ではトリ（ラスト）を担当。
-              シーンと文脈に寄り添いながら、耳に残るフックを大切にします。
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Pill>BPM 128–140 が得意</Pill>
-              <Pill>メロ＋コード設計</Pill>
-              <Pill>映像・ゲームの尺合わせ対応</Pill>
-              <Pill>日本語/英語OK</Pill>
-            </div>
-          </GradientCard>
-          <GradientCard>
-            <div className="flex h-full flex-col justify-between">
-              <div>
-                <h3 className="font-semibold">受注の流れ</h3>
-                <ol className="mt-2 list-decimal pl-4 text-sm text-white/80 space-y-1">
-                  <li>ご相談（用途・尺・参考曲・納期）</li>
-                  <li>お見積り＆方向性すり合わせ</li>
-                  <li>デモ提出（1–2回リテイク）</li>
-                  <li>納品（WAV/MP3、ステム対応可）</li>
-                </ol>
-              </div>
-              <div className="mt-4 text-xs text-white/60">
-                ※ 商用利用・クレジット表記などは用途に応じて柔軟に対応します。
-              </div>
-            </div>
-          </GradientCard>
-        </div>
-      </Section>
-
-      {/* Contact */}
-      <Section id="contact" title="Contact / お問い合わせ" subtitle="お仕事のご依頼・コラボのご相談はこちらから。SNSのDMでもOKです。">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <GradientCard className="md:col-span-2">
-            <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input placeholder="お名前" className="rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30" />
-              <input placeholder="メールアドレス" className="rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30" />
-              <input placeholder="ご依頼内容（BGM/楽曲/ミックス など）" className="sm:col-span-2 rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30" />
-              <textarea placeholder="用途・尺・参考曲・希望納期など" rows={5} className="sm:col-span-2 rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30" />
-              <button type="button" className="sm:col-span-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90">送信（デモ）</button>
-            </form>
-          </GradientCard>
-
-          <GradientCard>
-            <h3 className="font-semibold mb-3">Links</h3>
-            <ul className="space-y-2 text-sm text-white/80">
-              <li className="flex items-center gap-2"><Youtube className="h-4 w-4"/> YouTube — <a href="#" className="underline decoration-white/30 hover:decoration-white">動画・ショーリール</a></li>
-              <li className="flex items-center gap-2"><Instagram className="h-4 w-4"/> Instagram — <a href="#" className="underline decoration-white/30 hover:decoration-white">制作の裏側</a></li>
-              <li className="flex items-center gap-2"><Twitter className="h-4 w-4"/> X(Twitter) — <a href="#" className="underline decoration-white/30 hover:decoration-white">更新情報</a></li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> Mail — <a href="#" className="underline decoration-white/30 hover:decoration-white">contact@example.com</a></li>
-            </ul>
-          </GradientCard>
-        </div>
-      </Section>
-
-      {/* Footer */}
-      <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto max-w-6xl px-6 text-xs sm:text-sm text-white/60 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>© {new Date().getFullYear()} PIXEL SUMMER STUDIO — All Rights Reserved.</p>
-          <div className="flex items-center gap-2">
-            <Pill>Built with React + Tailwind</Pill>
-            <Pill>Audio Friendly Mix</Pill>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <h3 class="mb-3 font-semibold">単曲プレイヤー（デモ）</h3>
+        <div class="space-y-4">
+          <div class="rounded-xl border border-white/10 bg-black/30 p-4">
+            <p class="text-sm mb-2 text-white/80">PIXEL SUMMER RESTART – Last Mix</p>
+            <audio controls class="w-full"><source src="demo-last-track.mp3" type="audio/mpeg" /></audio>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-black/30 p-4">
+            <p class="text-sm mb-2 text-white/80">Midnight Arcade</p>
+            <audio controls class="w-full"><source src="demo-ukg.mp3" type="audio/mpeg" /></audio>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-black/30 p-4">
+            <p class="text-sm mb-2 text-white/80">Quiet City</p>
+            <audio controls class="w-full"><source src="demo-ambient.mp3" type="audio/mpeg" /></audio>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
-  );
-}
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="relative py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="text-3xl font-extrabold tracking-tight flex items-center gap-3">✨ Services / できること</h2>
+      <p class="mt-3 text-white/70">作編曲、サウンドデザイン、ミックスまでワンストップ。</p>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6"><h3 class="text-lg font-semibold">楽曲提供</h3><p class="mt-2 text-sm text-white/70">番組・配信・ゲーム向けのBGM/SE、タイアップ曲、テーマ曲制作。</p></div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6"><h3 class="text-lg font-semibold">サウンドデザイン</h3><p class="mt-2 text-sm text-white/70">UI/SE、ゲームSFX、レトロ×モダンな質感の音作り。</p></div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6"><h3 class="text-lg font-semibold">ミックス/マスタリング</h3><p class="mt-2 text-sm text-white/70">透明感・立体感のある仕上がり。配信/映像で映える音に。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="relative py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="text-3xl font-extrabold tracking-tight flex items-center gap-3">✨ Tools / 制作環境</h2>
+      <p class="mt-3 text-white/70">メインDAWは Cubase 12。KOMPLETE 13、Nexus4、Serum、外付けSSD運用。</p>
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        <div class="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm text-white/80">Cubase 12</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm text-white/80">KOMPLETE 13</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm text-white/80">Nexus4</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm text-white/80">Serum</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm text-white/80">FabFilter</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-sm text-white/80">Ozone</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="relative py-20">
+    <div class="mx-auto max-w-6xl px-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      <div class="md:col-span-2 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <p class="text-white/80 leading-relaxed">
+          幼少期のゲーム音楽に影響を受け、現在は電子音楽を中心に制作。チップチューンのきらめきと2step/UKGのスウィング感を融合させた、
+          ノスタルジックかつモダンなトラックを目指しています。コンピ参加曲『PIXEL SUMMER RESTART』ではトリ（ラスト）を担当。
+          シーンと文脈に寄り添いながら、耳に残るフックを大切にします。
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">BPM 128–140 が得意</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">メロ＋コード設計</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">映像・ゲームの尺合わせ対応</span>
+          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">日本語/英語OK</span>
+        </div>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="font-semibold">受注の流れ</h3>
+          <ol class="mt-2 list-decimal pl-5 text-sm text-white/80 space-y-1">
+            <li>ご相談（用途・尺・参考曲・納期）</li>
+            <li>お見積り＆方向性すり合わせ</li>
+            <li>デモ提出（1–2回リテイク）</li>
+            <li>納品（WAV/MP3、ステム対応可）</li>
+          </ol>
+        </div>
+        <div class="mt-4 text-xs text-white/60">※ 商用利用・クレジット表記などは用途に応じて柔軟に対応します。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="relative py-20">
+    <div class="mx-auto max-w-6xl px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <form class="grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="alert('デモ：送信先は未設定です'); return false;">
+          <input placeholder="お名前" class="rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30">
+          <input placeholder="メールアドレス" class="rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30">
+          <input placeholder="ご依頼内容（BGM/楽曲/ミックス など）" class="sm:col-span-2 rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30">
+          <textarea placeholder="用途・尺・参考曲・希望納期など" rows="5" class="sm:col-span-2 rounded-xl border border-white/15 bg-white/5 p-3 text-sm outline-none placeholder:text-white/50 focus:border-white/30"></textarea>
+          <button type="submit" class="sm:col-span-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90">送信（デモ）</button>
+        </form>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <h3 class="font-semibold mb-3">Links</h3>
+        <ul class="space-y-2 text-sm text-white/80">
+          <li>▶ YouTube — <a class="underline decoration-white/30 hover:decoration-white" href="#">動画・ショーリール</a></li>
+          <li>📷 Instagram — <a class="underline decoration-white/30 hover:decoration-white" href="#">制作の裏側</a></li>
+          <li>𝕏 X(Twitter) — <a class="underline decoration-white/30 hover:decoration-white" href="#">更新情報</a></li>
+          <li>✉ Mail — <a class="underline decoration-white/30 hover:decoration-white" href="#">contact@example.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-10">
+    <div class="mx-auto max-w-6xl px-6 text-xs sm:text-sm text-white/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© <span id="y"></span> PIXEL SUMMER STUDIO — All Rights Reserved.</p>
+      <div class="flex gap-2">
+        <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">Built with Tailwind</span>
+        <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">Audio Friendly Mix</span>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
